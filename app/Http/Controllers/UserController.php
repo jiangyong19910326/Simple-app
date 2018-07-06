@@ -25,7 +25,7 @@ class UserController extends Controller
             'name' => 'required|max:50',
             'email' => 'required|email|unique:users|max:255',
             'password' => 'required|confirmed|min:6|max:18',
-            'g-recaptcha-response' => 'required|captcha',
+            //'g-recaptcha-response' => 'required|captcha', //验证码注释
         ]);
 
         $user = User::create([

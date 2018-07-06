@@ -30,10 +30,11 @@
                         <label for="password_confirmation">确认密码：</label>
                         <input type="password" name="password_confirmation" class="form-control" value="{{ old('password_confirmation') }}">
                     </div>
-                    <div class="form-group">
+                    <!-- 验证码注释 -->
+                   <!--  <div class="form-group">
                         <label class="col-md-4 control-label">验证码</label>
                             {!! app('captcha')->display(); !!}
-                    </div>
+                    </div> -->
 
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4" style="line-height: 6">
