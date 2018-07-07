@@ -19,7 +19,7 @@ class SessionController extends Controller
             'email' => 'required|max:255',
             'password' => 'required',
         ]);
-        var_dump($credentials['email']);
+//        var_dump($credentials['email']);
         //用户名或者邮箱的判断
         $type = filter_var($request->email,FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
