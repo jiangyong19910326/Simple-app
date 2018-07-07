@@ -11,6 +11,7 @@
 |
 */
 
+
 $app = new Illuminate\Foundation\Application(
     realpath(__DIR__.'/../')
 );
@@ -51,5 +52,7 @@ $app->singleton(
 | from the actual running of the application and sending responses.
 |
 */
+//本地和heroku数据库信息配置加载
+require __DIR__.'/helpers.php';
 
 return $app;
