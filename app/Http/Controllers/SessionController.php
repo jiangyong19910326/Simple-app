@@ -6,6 +6,14 @@ use Illuminate\Http\Request;
 use Auth;
 class SessionController extends Controller
 {
+    // 未登录用户可以访问登录页面权限设置
+    public function __construct()
+    {
+        $this->middleware('guest', [
+            'only' => ['create']
+        ]);
+    }
+
     // 登陆页面
     public function create()
     {
@@ -29,7 +37,7 @@ class SessionController extends Controller
             {
                 //验证成功之后
                 session()->flash('success','欢迎回来！');
-                return redirect()->route('users.show',[Auth::user()]);
+                return redirect()->intended(route('users.show',[Auth::user()]));
             } else {
                 //验证失败之后
                 session()->flash('danger','很抱歉，你输入的邮箱或者密码不匹配。');
@@ -40,7 +48,7 @@ class SessionController extends Controller
             {
                 //验证成功之后
                 session()->flash('success','欢迎回来！');
-                return redirect()->route('users.show',[Auth::user()]);
+                return redirect()->intended(route('users.show',[Auth::user()]));
             } else {
                 //验证失败之后
                 session()->flash('danger','很抱歉，你输入的邮箱或者密码不匹配。');
