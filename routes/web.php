@@ -24,3 +24,5 @@ Route::resource('users','UserController'); //定义资源用户路由
 Route::get('login','SessionController@create')->name('login'); //登陆页面
 Route::post('login','SessionController@store')->name('login'); //登陆操作 创建新会话
 Route::delete('logout','SessionController@destroy')->name('logout'); //登出操作 销毁会话
+
+Route::get('signup/confirm/{token}','UserController@confirmEmail')->name('confirm_email');
