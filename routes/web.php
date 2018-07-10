@@ -26,3 +26,9 @@ Route::post('login','SessionController@store')->name('login'); //登陆操作 �
 Route::delete('logout','SessionController@destroy')->name('logout'); //登出操作 销毁会话
 
 Route::get('signup/confirm/{token}','UserController@confirmEmail')->name('confirm_email');
+
+//密码重置路由
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request'); // 密码重置视图
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');  // 重置密码发送到邮箱
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset'); // 获取重置密码的表单视图
+Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update'); // 重置密码操作

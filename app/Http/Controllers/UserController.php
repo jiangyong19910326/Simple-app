@@ -21,6 +21,10 @@ class UserController extends Controller
         ]);
     }
 
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPassword($token));
+    }
     public function index()
     {
         $users = User::paginate(10);
