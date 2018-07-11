@@ -37,10 +37,10 @@ class UserController extends Controller
     }
 
     //
-    public function show(User $user)
-    {
-        return view('users.show',compact('user'));
-    }
+//    public function show(User $user)
+//    {
+//        return view('users.show',compact('user'));
+//    }
 
     //用户注册提交
     public function store(Request $request)
@@ -128,5 +128,13 @@ class UserController extends Controller
         Mail::send($view, $data, function ($message) use (  $to, $subject) {
             $message->to($to)->subject($subject);
         });
+    }
+
+    //获取用户微博
+    public function show(User $user)
+    {
+        $statuses = $user->statuses()->orderBy('created_at','desc')->paginate('30');
+
+        return view('users.show',compact('user','statuses'));
     }
 }

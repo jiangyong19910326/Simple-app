@@ -32,3 +32,5 @@ Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm'
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');  // 重置密码发送到邮箱
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset'); // 获取重置密码的表单视图
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update'); // 重置密码操作
+
+Route::resource('statuses', 'StatusesController', ['only' => ['store', 'destroy']]);
