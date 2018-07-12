@@ -34,3 +34,10 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update'); // 重置密码操作
 
 Route::resource('statuses', 'StatusesController', ['only' => ['store', 'destroy']]);
+
+//关注与取消
+
+Route::get('/users/{user}/followings', 'UserController@followings')->name('users.followings');
+Route::get('/users/{user}/followers', 'UserController@followers')->name('users.followers');
+Route::post('/users/followers/{user}', 'FollowersController@store')->name('followers.store');
+Route::delete('/users/followers/{user}', 'FollowersController@destroy')->name('followers.destroy');

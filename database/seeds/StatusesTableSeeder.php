@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Status;
-use App\Models\User;
 
 class StatusesTableSeeder extends Seeder
 {
